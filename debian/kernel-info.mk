@@ -13,20 +13,20 @@ KERNEL_BASE_VERSION = 4.19-325
 # The kernel cmdline to use
 # Sony Sony-specific bits (buildid=EDO-..., oemboot.earlymount=/mnt/oem)
 # removed. console=null matches what the device's stock TWRP boots with.
-KERNEL_BOOTIMAGE_CMDLINE = console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm buildproduct=gts7xlwifi droidian.lvm.prefer
+KERNEL_BOOTIMAGE_CMDLINE = console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm buildproduct=gts7l droidian.lvm.prefer
 
 # Slug for the device vendor. This is going to be used in the KERNELRELASE
 # and package names.
 DEVICE_VENDOR = samsung
 
 # Slug for the device model. Like above.
-DEVICE_MODEL = gts7xlwifi
+DEVICE_MODEL = gts7l
 
 # Slug for the device platform. If unsure, keep this commented.
 DEVICE_PLATFORM = kona
 
 # Marketing-friendly full-name. This will be used inside package descriptions
-DEVICE_FULL_NAME = Samsung Galaxy Tab S7+ Wi-Fi
+DEVICE_FULL_NAME = Samsung Galaxy Tab S7 LTE
 
 # Whether to use configuration fragments to augment the kernel configuration.
 # If unsure, keep this to 0.
@@ -37,7 +37,7 @@ KERNEL_CONFIG_USE_FRAGMENTS = 1
 # If unsure, keep this to 0.
 KERNEL_CONFIG_USE_DIFFCONFIG = 0
 
-KERNEL_CONFIG_EXTRA_FRAGMENTS = kona-sec-common.config gts7xlwifi.config extra.config
+KERNEL_CONFIG_EXTRA_FRAGMENTS = kona-sec-common.config gts7l.config extra.config
 
 # The diffconfig to apply. Only used when KERNEL_CONFIG_USE_DIFFCONFIG is
 # enabled.
@@ -58,8 +58,7 @@ KERNEL_IMAGE_DTB = arch/arm64/boot/dts/vendor/qcom/*.dtb
 KERNEL_IMAGE_WITH_DTB_OVERLAY = 1
 
 # Path to the DTB overlay.
-# Samsung gts7xlwifi ships EU HW revs r02..r06 as separate dtbo overlays.
-KERNEL_IMAGE_DTB_OVERLAY = arch/arm64/boot/dts/samsung/gts7xl/*.dtbo
+KERNEL_IMAGE_DTB_OVERLAY = arch/arm64/boot/dts/samsung/gts7l/*.dtbo
 
 # Whether to include the DTB Overlay into the kernel image
 # Use 0 (no, default) or 1.
@@ -135,16 +134,14 @@ FLASH_IS_LEGACY_DEVICE = 0
 FLASH_INFO_MANUFACTURER = samsung
 
 # Device model. This must match the `ro.product.vendor.model`
-# Android property. On SM-T970 the vendor model is SM-T970.
-FLASH_INFO_MODEL = SM-T970
+# Android property.
+FLASH_INFO_MODEL = SM-T875
 
 # Device CPU. Last-resort match against /proc/cpuinfo.
 FLASH_INFO_CPU = Qualcomm Technologies, Inc KONA
 
 # Space-separated list of supported device ids as reported by fastboot.
-# Tab S7+ Wi-Fi (SM-T970) is the primary target; Tab S7+ LTE/5G variants
-# (SM-T976B, SM-T975) share the kernel and DT and only differ at the modem.
-FLASH_INFO_DEVICE_IDS = SM-T970 SM-T975 SM-T976 SM-T976B gts7xlwifi gts7xl
+FLASH_INFO_DEVICE_IDS = SM-T875 gts7l
 
 ########################################################################
 # Kernel build settings
